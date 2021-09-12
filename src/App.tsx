@@ -19,12 +19,12 @@ function App() {
   }
 
   return (
-    <Layout>
+    <Layout style={{ minHeight: "100vh" }}>
       <Header>
-        <Title>NASA Photobook</Title>
-        <Search placeholder="Search images" onSearch={handleSearch} enterButton />
+        <Title style={{paddingTop: 10, color: 'white'}}>NASA Photobook</Title>
       </Header>
-      <Content>
+      <Content style={{margin: 30}}>
+        <Search style={{paddingBottom: 30}} placeholder="Search images" onSearch={handleSearch} enterButton />
         <SearchPage imageStore={imageStore} imageUiStore={imageUiStore} />
       </Content>
       <Footer style={{ textAlign: 'center' }}>Created by Eric Pham for Shopify's Front End Developer Intern Challenge - Winter 2022</Footer>

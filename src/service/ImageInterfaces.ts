@@ -6,11 +6,15 @@ export interface Images {
 export interface Image {
     id: string,
     title: string,
-    url: string,
+    href: string,
+    imgUrl: string
+    date: string,
+    description?: string,
 }
 
-export interface AssetDetails {
-    // todo: fill in
+export interface AssetDetails extends Image {
+    location: string,
+    center: string,
 }
 
 export interface FilterParams {

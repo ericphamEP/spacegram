@@ -1,3 +1,4 @@
+import { makeAutoObservable } from "mobx";
 import { ImageStore } from "./ImageStore";
 import { FilterParams } from "../service/ImageInterfaces";
 
@@ -9,6 +10,7 @@ export class ImageUiStore {
     private page: number = 1;
 
     constructor(imageStore: ImageStore) {
+        makeAutoObservable(this);
         this.imageStore = imageStore;
     }
 
@@ -26,7 +28,9 @@ export class ImageUiStore {
         this.isLoading = status;
     }
 
-    loadSearchResults() {
-        this.imageStore.fetchImagesSearch(this.currentSearch, this.filters, this.page)
+    async loadSearchResults() {
+        this.setIsLoading(true);
+        await this.imageStore.fetchImagesSearch(this.currentSearch, this.filters, this.page);
+        this.setIsLoading(false);
     }
 }
