@@ -12,6 +12,13 @@ export class ImageStore {
 
     constructor() {
         makeAutoObservable(this);
+        try {
+            const initialLikedImages = localStorage.getItem( 'likedImages' );
+            this.likedImages = initialLikedImages ? JSON.parse(initialLikedImages) : {}
+        } catch {
+            this.likedImages = {};
+        }
+        
     }
 
     async fetchImagesSearch(search?: string, filters?: FilterParams, page?: number, assetId?: string): Promise<void> {
@@ -31,6 +38,7 @@ export class ImageStore {
         } else {
             this.likedImages[assetId] = true;
         }
+        localStorage.setItem( 'likedImages', JSON.stringify(this.likedImages) );
         await this.fetchLikedImages();
     }
 
