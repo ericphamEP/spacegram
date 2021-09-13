@@ -27,7 +27,7 @@ function App(): JSX.Element {
       <Header>
         <Title style={{paddingTop: 5, color: 'white'}} onClick={resetSearch}>NASA&apos;s Photobook</Title>
       </Header>
-      <Content style={{margin: 30}}>
+      <Content style={{margin: 50}}>
         <Search style={{paddingBottom: 30}} placeholder="Search images" onSearch={handleSearch} enterButton />
         <QueryBar imageStore={imageStore} imageUiStore={imageUiStore} />
         <SearchPage imageStore={imageStore} imageUiStore={imageUiStore} />
