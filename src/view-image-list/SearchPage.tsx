@@ -21,7 +21,7 @@ export class SearchPage extends React.Component<SearchPageProps, {}> {
           this.props.imageUiStore.getIsLoading() ? <Spin size="large" /> :
           this.props.imageStore.imagesList.length <= 0 ? <Text>No results. Try searching!</Text> :
             this.props.imageStore.imagesList.map((imageData) => {
-              return <Col span={4}><ImagePreview key={imageData.id} image={imageData} onLike={this.props.imageStore.onLike} liked={this.props.imageStore.likedImages[imageData.id]} /></Col>
+              return <Col span={4} key={imageData.id}><ImagePreview image={imageData} onLike={this.props.imageStore.onLike} liked={this.props.imageStore.likedImages[imageData.id]} /></Col>
             })
         }
       </Row>

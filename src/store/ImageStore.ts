@@ -8,6 +8,8 @@ export class ImageStore {
     totalImagesCount: number = 0;
     assetDetails = {};
     likedImages: {[key: string]: boolean} = {};
+    likedImages2: {[key: string]: boolean} = {};
+
 
     constructor() {
         makeAutoObservable(this);
@@ -19,7 +21,7 @@ export class ImageStore {
         this.totalImagesCount = imagesObj.totalImagesCount;
     }
 
-    onLike(assetId: string): void {
+    onLike = (assetId: string) => {
         if (assetId in this.likedImages) {
             delete this.likedImages[assetId];
         } else {
