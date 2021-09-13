@@ -4,10 +4,10 @@ import { FilterParams } from "../service/ImageInterfaces";
 
 export class ImageUiStore {
     private imageStore: ImageStore;
-    private isLoading: boolean = false;
-    private currentSearch: string = "";
+    private isLoading = false;
+    private currentSearch = "";
     private filters: FilterParams = {};
-    private page: number = 1;
+    private page = 1;
 
     constructor(imageStore: ImageStore) {
         makeAutoObservable(this);
@@ -17,19 +17,28 @@ export class ImageUiStore {
     getSearch(): string {
         return this.currentSearch;
     }
-    setSearch(newSearch: string) {
+    setSearch(newSearch: string): void {
         this.currentSearch = newSearch;
+        this.setPage(1);
     }
 
     getIsLoading(): boolean {
         return this.isLoading;
     }
-    setIsLoading(status: boolean) {
+    setIsLoading(status: boolean): void {
         this.isLoading = status;
     }
 
-    async loadSearchResults() {
+    getPage(): number {
+        return this.page;
+    }
+    setPage(newPage: number): void {
+        this.page = newPage;
+    }
+
+    async loadSearchResults(): Promise<void> {
         this.setIsLoading(true);
+        console.log(this.page)
         await this.imageStore.fetchImagesSearch(this.currentSearch, this.filters, this.page);
         this.setIsLoading(false);
     }

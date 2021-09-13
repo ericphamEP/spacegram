@@ -15,11 +15,7 @@ export class ImageService {
         return images;
     }
 
-    async getAsset() {
-
-    }
-
-    private _showError(msg: string, err: any) {
+    private _showError(msg: string, err: unknown) {
         notification['error']({
             message: "Image Service Error",
             description: msg,

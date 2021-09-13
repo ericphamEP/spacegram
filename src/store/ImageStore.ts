@@ -5,11 +5,9 @@ import { Image, FilterParams } from "../service/ImageInterfaces";
 export class ImageStore {
     imageService = new ImageService();
     imagesList: Image[] = [];
-    totalImagesCount: number = 0;
+    totalImagesCount = 0;
     assetDetails = {};
     likedImages: {[key: string]: boolean} = {};
-    likedImages2: {[key: string]: boolean} = {};
-
 
     constructor() {
         makeAutoObservable(this);
@@ -21,7 +19,7 @@ export class ImageStore {
         this.totalImagesCount = imagesObj.totalImagesCount;
     }
 
-    onLike = (assetId: string) => {
+    onLike = (assetId: string): void => {
         if (assetId in this.likedImages) {
             delete this.likedImages[assetId];
         } else {

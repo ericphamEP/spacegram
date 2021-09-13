@@ -13,7 +13,7 @@ interface SearchPageProps {
 }
 
 export class ImagePreview extends React.Component<SearchPageProps, {}> {
-  render() {
+  render(): JSX.Element {
     return (
       <Card
         hoverable

@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import axios from "axios";
 import { Images, FilterParams } from "./ImageInterfaces";
 
 export class ApiQueryBuilder {
-    root: string = "https://images-api.nasa.gov";
+    root = "https://images-api.nasa.gov";
 
     async getImages(search?: string, filters?: FilterParams, page?: number, assetId?: string): Promise<Images> {
         const params = {q: search, page, nasa_id: assetId, media_type: "image", ...filters};
