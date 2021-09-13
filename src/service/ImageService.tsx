@@ -15,6 +15,16 @@ export class ImageService {
         return images;
     }
 
+    async getImagesFromIds(assetIds: string[]): Promise<Images> {
+        let images: Images = {images: [], totalImagesCount: 0};
+        try {
+            images = await this.queryService.getImagesFromIds(assetIds);
+        } catch (err) {
+            this._showError("Could not fetch for group of images", err);
+        }
+        return images;
+    }
+
     private _showError(msg: string, err: unknown) {
         notification['error']({
             message: "Image Service Error",

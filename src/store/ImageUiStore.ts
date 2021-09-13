@@ -5,6 +5,7 @@ import { FilterParams } from "../service/ImageInterfaces";
 export class ImageUiStore {
     private imageStore: ImageStore;
     private isLoading = false;
+    private isLikeLoading = false;
     private currentSearch = "";
     private filters: FilterParams = {};
     private page = 1;
@@ -29,6 +30,13 @@ export class ImageUiStore {
         this.isLoading = status;
     }
 
+    getIsLikeLoading(): boolean {
+        return this.isLikeLoading;
+    }
+    setIsLikeLoading(status: boolean): void {
+        this.isLikeLoading = status;
+    }
+
     getPage(): number {
         return this.page;
     }
@@ -38,8 +46,13 @@ export class ImageUiStore {
 
     async loadSearchResults(): Promise<void> {
         this.setIsLoading(true);
-        console.log(this.page)
         await this.imageStore.fetchImagesSearch(this.currentSearch, this.filters, this.page);
         this.setIsLoading(false);
+    }
+
+    async loadLikedImages(): Promise<void> {
+        this.setIsLikeLoading(true);
+        await this.imageStore.fetchLikedImages();
+        this.setIsLikeLoading(false);
     }
 }

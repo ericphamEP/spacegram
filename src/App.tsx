@@ -1,14 +1,16 @@
 import React from 'react';
 import { ImageStore } from './store/ImageStore';
 import { ImageUiStore } from './store/ImageUiStore';
-import { Layout, Typography, Input } from 'antd'
+import { Layout, Typography, Input, Collapse } from 'antd'
 import './App.css';
 import { SearchPage } from './view-image-list/SearchPage';
 import { QueryBar } from './view-image-list/QueryBar';
+import { LikedImages } from './view-image-list/LikedImages';
 
 const { Header, Content, Footer } = Layout;
 const { Title } = Typography;
 const { Search } = Input;
+const { Panel } = Collapse;
 
 const imageStore = new ImageStore();
 const imageUiStore = new ImageUiStore(imageStore);
@@ -30,6 +32,11 @@ function App(): JSX.Element {
       <Content style={{margin: 50}}>
         <Search style={{paddingBottom: 30}} placeholder="Search images" onSearch={handleSearch} enterButton />
         <QueryBar imageStore={imageStore} imageUiStore={imageUiStore} />
+        <Collapse defaultActiveKey={['1']} style={{marginBottom: 20}}>
+          <Panel header="Liked Images" key="1">
+            <LikedImages imageStore={imageStore} imageUiStore={imageUiStore} />
+          </Panel>
+        </Collapse>
         <SearchPage imageStore={imageStore} imageUiStore={imageUiStore} />
       </Content>
       <Footer style={{ textAlign: 'center' }}>Created by Eric Pham for Shopify&apos;s Front End Developer Intern Challenge - Winter 2022</Footer>
