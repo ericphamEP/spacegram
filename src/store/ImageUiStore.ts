@@ -4,11 +4,13 @@ import { FilterParams } from "../service/ImageInterfaces";
 
 export class ImageUiStore {
     private imageStore: ImageStore;
-    private isLoading = false;
-    private isLikeLoading = false;
     private currentSearch = "";
     private filters: FilterParams = {};
     private page = 1;
+
+    private isLoading = false;
+    private isLikeLoading = false;
+    private isListView = false;
 
     constructor(imageStore: ImageStore) {
         makeAutoObservable(this);
@@ -35,6 +37,13 @@ export class ImageUiStore {
     }
     setIsLikeLoading(status: boolean): void {
         this.isLikeLoading = status;
+    }
+
+    getIsListView(): boolean {
+        return this.isListView;
+    }
+    setIsListView(status: boolean): void {
+        this.isListView = status;
     }
 
     getPage(): number {

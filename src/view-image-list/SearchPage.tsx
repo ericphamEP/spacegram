@@ -3,7 +3,8 @@ import { observer } from "mobx-react"
 import { ImageStore } from './../store/ImageStore';
 import { ImageUiStore } from './../store/ImageUiStore';
 import { Row, Col, Typography, Spin } from 'antd';
-import { ImagePreview } from './ImagePreview';
+import { GridView } from './GridView';
+import { ListView } from './ListView';
 
 const { Title } = Typography;
 
@@ -24,9 +25,7 @@ export class SearchPage extends React.Component<SearchPageProps, {}> {
         {
           this.props.imageUiStore.getIsLoading() ? <Spin size="large" /> :
           this.props.imageStore.imagesList.length <= 0 ? <Col span={8}><Title level={2}>No results :(</Title></Col> :
-            this.props.imageStore.imagesList.map((imageData) => {
-              return <Col span={4} key={imageData.id}><ImagePreview image={imageData} onLike={this.props.imageStore.onLike} liked={this.props.imageStore.likedImages[imageData.id]} /></Col>
-            })
+          this.props.imageUiStore.getIsListView() ? <ListView imageStore={this.props.imageStore} /> : <GridView imageStore={this.props.imageStore} />
         }
       </Row>
     );

@@ -30,13 +30,13 @@ function App(): JSX.Element {
         <Title style={{paddingTop: 5, color: 'white'}} onClick={resetSearch}>NASA&apos;s Photobook</Title>
       </Header>
       <Content style={{margin: 50}}>
-        <Search style={{paddingBottom: 30}} placeholder="Search images" onSearch={handleSearch} enterButton />
-        <QueryBar imageStore={imageStore} imageUiStore={imageUiStore} />
         <Collapse defaultActiveKey={['1']} style={{marginBottom: 20}}>
           <Panel header="Liked Images" key="1">
             <LikedImages imageStore={imageStore} imageUiStore={imageUiStore} />
           </Panel>
         </Collapse>
+        <Search style={{paddingBottom: 30}} placeholder="Search images" onSearch={handleSearch} enterButton size="large" />
+        <QueryBar imageStore={imageStore} imageUiStore={imageUiStore} />
         <SearchPage imageStore={imageStore} imageUiStore={imageUiStore} />
       </Content>
       <Footer style={{ textAlign: 'center' }}>Created by Eric Pham for Shopify&apos;s Front End Developer Intern Challenge - Winter 2022</Footer>
