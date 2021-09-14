@@ -1,4 +1,3 @@
-import React from 'react';
 import { ImageStore } from './store/ImageStore';
 import { ImageUiStore } from './store/ImageUiStore';
 import { Layout, Typography, Input, Collapse } from 'antd'
