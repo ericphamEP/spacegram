@@ -19,6 +19,8 @@ export class ImageUiStore {
         this.imageStore = imageStore;
     }
 
+    // Getters and setters
+
     getSearch(): string {
         return this.currentSearch;
     }
@@ -73,19 +75,31 @@ export class ImageUiStore {
         this.imageStore.setImageDetails({image: undefined});
     }
 
+    // Interact with main store
+
     async loadSearchResults(): Promise<void> {
+        /*
+        Load search results
+        */
         this.setIsLoading(true);
         await this.imageStore.fetchImagesSearch(this.currentSearch, this.filters, this.page);
         this.setIsLoading(false);
     }
 
     async loadLikedImages(): Promise<void> {
+        /*
+        Load liked images
+        */
         this.setIsLikeLoading(true);
         await this.imageStore.fetchLikedImages();
         this.setIsLikeLoading(false);
     }
 
     loadImageDetails = async (assetId: string): Promise<void> => {
+        /*
+        Load full image details
+        :input assetId: NASA ID string
+        */
         this.setIsDetailsLoading(true);
         this.setIsDetailsOpen(true);
         await this.imageStore.fetchImageDetails(assetId);

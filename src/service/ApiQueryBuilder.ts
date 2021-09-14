@@ -6,6 +6,14 @@ export class ApiQueryBuilder {
     root = "https://images-api.nasa.gov";
 
     async getImages(search?: string, filters?: FilterParams, page?: number, assetId?: string): Promise<Images> {
+        /*
+        Send request for images using search endpoint
+        :input search: Search string
+        :input filters: Filter params object
+        :input page: Page number
+        :input assetId: NASA ID string
+        :return: Images object with list and count
+        */
         const params = {q: search, page, nasa_id: assetId, media_type: "image", ...filters};
         const response = await axios.get(`${this.root}/search`, { params });
         const totalImagesCount = response.data.collection.metadata.total_hits;
@@ -14,6 +22,11 @@ export class ApiQueryBuilder {
     }
 
     async getImagesFromIds(assetIds: string[]): Promise<Images> {
+        /*
+        Send requests for images using search endpoint and assetId params
+        :input assetIds: List of NASA ID strings
+        :return: Images object with list and count
+        */
         let imageDataList: Image[] = [];
         for (const assetId of assetIds) {
             const params = {nasa_id: assetId, media_type: "image"};
@@ -24,6 +37,11 @@ export class ApiQueryBuilder {
     }
 
     async getImageDetails(assetId: string): Promise<AssetDetails> {
+        /*
+        Send request for image using search endpoint, get full details
+        :input assetId: NASA ID string
+        :return: Image object with full details
+        */
         const response = await axios.get(`${this.root}/search`, {params: {nasa_id: assetId}});
         return this._mapResponseDataToFormattedDataFull(response.data.collection.items[0]);
     }

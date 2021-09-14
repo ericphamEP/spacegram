@@ -6,6 +6,14 @@ export class ImageService {
     queryService = new ApiQueryBuilder();
 
     async getImagesSearch(search?: string, filters?: FilterParams, page?: number, assetId?: string): Promise<Images> {
+        /*
+        Search images using variety of params
+        :input search: Search string
+        :input filters: Filter params object
+        :input page: Page number
+        :input assetId: NASA ID string
+        :return: Images object with list and count
+        */
         let images: Images = {images: [], totalImagesCount: 0};
         try {
             images = await this.queryService.getImages(search, filters, page, assetId);
@@ -16,6 +24,11 @@ export class ImageService {
     }
 
     async getImagesFromIds(assetIds: string[]): Promise<Images> {
+        /*
+        Search images with list of IDs
+        :input assetIds: List of NASA ID strings
+        :return: Images object with list and count
+        */
         let images: Images = {images: [], totalImagesCount: 0};
         try {
             images = await this.queryService.getImagesFromIds(assetIds);
@@ -26,6 +39,11 @@ export class ImageService {
     }
 
     async getImageDetails(assetId: string): Promise<AssetDetails> {
+        /*
+        Get full image details
+        :input assetId: NASA ID string
+        :return: Image object with full details
+        */
         let imageDetails: AssetDetails = {image: undefined};
         try {
             imageDetails = await this.queryService.getImageDetails(assetId);
@@ -35,7 +53,12 @@ export class ImageService {
         return imageDetails;
     }
 
-    private _showError(msg: string, err: unknown) {
+    private _showError(msg: string, err: unknown): void {
+        /*
+        Display message notification to user and log error
+        :input msg: Message string
+        :input err: Error object
+        */
         notification['error']({
             message: "Image Service Error",
             description: msg,
