@@ -10,6 +10,8 @@ export class ImageUiStore {
 
     private isLoading = false;
     private isLikeLoading = false;
+    private isDetailsLoading = false;
+    private isDetailsOpen = false;
     private isListView = false;
 
     constructor(imageStore: ImageStore) {
@@ -39,6 +41,20 @@ export class ImageUiStore {
         this.isLikeLoading = status;
     }
 
+    getIsDetailsLoading(): boolean {
+        return this.isDetailsLoading;
+    }
+    setIsDetailsLoading(status: boolean): void {
+        this.isDetailsLoading = status;
+    }
+
+    getIsDetailsOpen(): boolean {
+        return this.isDetailsOpen;
+    }
+    setIsDetailsOpen(status: boolean): void {
+        this.isDetailsOpen = status;
+    }
+
     getIsListView(): boolean {
         return this.isListView;
     }
@@ -53,6 +69,10 @@ export class ImageUiStore {
         this.page = newPage;
     }
 
+    resetImageDetails(): void {
+        this.imageStore.setImageDetails({image: undefined});
+    }
+
     async loadSearchResults(): Promise<void> {
         this.setIsLoading(true);
         await this.imageStore.fetchImagesSearch(this.currentSearch, this.filters, this.page);
@@ -63,5 +83,12 @@ export class ImageUiStore {
         this.setIsLikeLoading(true);
         await this.imageStore.fetchLikedImages();
         this.setIsLikeLoading(false);
+    }
+
+    loadImageDetails = async (assetId: string): Promise<void> => {
+        this.setIsDetailsLoading(true);
+        this.setIsDetailsOpen(true);
+        await this.imageStore.fetchImageDetails(assetId);
+        this.setIsDetailsLoading(false);
     }
 }

@@ -6,15 +6,20 @@ export interface Images {
 export interface Image {
     id: string,
     title: string,
-    href: string,
     imgUrl: string
     date: string,
     description?: string,
 }
 
-export interface AssetDetails extends Image {
+export interface ImageDataFull extends Image {
     location: string,
     center: string,
+    keywords: string[],
+}
+
+
+export interface AssetDetails {
+    image: ImageDataFull | undefined,
 }
 
 export interface FilterParams {

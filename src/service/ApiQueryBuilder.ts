@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import axios from "axios";
-import { Images, Image, FilterParams } from "./ImageInterfaces";
+import { Images, Image, FilterParams, AssetDetails, ImageDataFull } from "./ImageInterfaces";
 
 export class ApiQueryBuilder {
     root = "https://images-api.nasa.gov";
@@ -23,14 +23,29 @@ export class ApiQueryBuilder {
         return {images: imageDataList, totalImagesCount: imageDataList.length };
     }
 
+    async getImageDetails(assetId: string): Promise<AssetDetails> {
+        const response = await axios.get(`${this.root}/search`, {params: {nasa_id: assetId}});
+        return this._mapResponseDataToFormattedDataFull(response.data.collection.items[0]);
+    }
+
     private _mapResponseDataToFormattedData(resData: any): Image {
         return {
             id: resData.data[0].nasa_id,
             title: resData.data[0].title,
             imgUrl: resData.links[0].href,
-            href: resData.href,
             date: resData.data[0].date_created,
             description: resData.data[0].description,
-        }
+        } as Image
+    }
+
+    private _mapResponseDataToFormattedDataFull(resData: any): AssetDetails {
+        return {
+            image: {
+                ...this._mapResponseDataToFormattedData(resData),
+                location: resData.data[0].location,
+                center: resData.data[0].center,
+                keywords: resData.data[0].keywords,
+            } as ImageDataFull
+        } 
     }
 }

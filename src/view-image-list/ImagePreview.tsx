@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, Typography } from 'antd';
 import moment from 'moment';
-import { HeartOutlined, HeartFilled } from '@ant-design/icons';
+import { HeartOutlined, HeartFilled, FileSearchOutlined } from '@ant-design/icons';
 import { Image } from "./../service/ImageInterfaces";
 
 const { Meta } = Card;
@@ -11,6 +11,7 @@ interface SearchPageProps {
   image: Image,
   liked: boolean,
   onLike: (assetId: string) => void,
+  onDetail: (assetId: string) => void,
 }
 
 export class ImagePreview extends React.Component<SearchPageProps, {}> {
@@ -30,6 +31,7 @@ export class ImagePreview extends React.Component<SearchPageProps, {}> {
           </div>
         }
         actions={[
+          <FileSearchOutlined key="details" onClick={() => this.props.onDetail(this.props.image.id)} />,
           this.props.liked ? <HeartFilled onClick={() => this.props.onLike(this.props.image.id)} /> :
           <HeartOutlined onClick={() => this.props.onLike(this.props.image.id)} />,
         ]}

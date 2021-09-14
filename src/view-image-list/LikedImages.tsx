@@ -25,7 +25,7 @@ export class LikedImages extends React.Component<LikedImagesProps, {}> {
           this.props.imageUiStore.getIsLikeLoading() ? <Spin size="large" /> :
           this.props.imageStore.likedImagesList.length <= 0 ? <Col span={8}><Text>No liked images to display</Text></Col> :
             this.props.imageStore.likedImagesList.map((imageData) => {
-              return <Col span={4} key={imageData.id}><ImagePreview image={imageData} onLike={this.props.imageStore.onLike} liked={this.props.imageStore.likedImages[imageData.id]} /></Col>
+              return <Col span={4} key={imageData.id}><ImagePreview image={imageData} onDetail={this.props.imageUiStore.loadImageDetails} onLike={this.props.imageStore.onLike} liked={this.props.imageStore.likedImages[imageData.id]} /></Col>
             })
         }
       </Row>

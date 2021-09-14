@@ -25,7 +25,8 @@ export class SearchPage extends React.Component<SearchPageProps, {}> {
         {
           this.props.imageUiStore.getIsLoading() ? <Spin size="large" /> :
           this.props.imageStore.imagesList.length <= 0 ? <Col span={8}><Title level={2}>No results :(</Title></Col> :
-          this.props.imageUiStore.getIsListView() ? <ListView imageStore={this.props.imageStore} /> : <GridView imageStore={this.props.imageStore} />
+          this.props.imageUiStore.getIsListView() ? <ListView imageStore={this.props.imageStore} imageUiStore={this.props.imageUiStore} /> : 
+          <GridView imageStore={this.props.imageStore} imageUiStore={this.props.imageUiStore} />
         }
       </Row>
     );

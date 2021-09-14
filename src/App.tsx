@@ -6,6 +6,7 @@ import './App.css';
 import { SearchPage } from './view-image-list/SearchPage';
 import { QueryBar } from './view-image-list/QueryBar';
 import { LikedImages } from './view-image-list/LikedImages';
+import { AssetModal } from './view-asset/AssetModal';
 
 const { Header, Content, Footer } = Layout;
 const { Title } = Typography;
@@ -38,6 +39,7 @@ function App(): JSX.Element {
         <Search style={{paddingBottom: 30}} placeholder="Search images" onSearch={handleSearch} enterButton size="large" />
         <QueryBar imageStore={imageStore} imageUiStore={imageUiStore} />
         <SearchPage imageStore={imageStore} imageUiStore={imageUiStore} />
+        <AssetModal imageStore={imageStore} imageUiStore={imageUiStore} />
       </Content>
       <Footer style={{ textAlign: 'center' }}>Created by Eric Pham for Shopify&apos;s Front End Developer Intern Challenge - Winter 2022</Footer>
     </Layout>

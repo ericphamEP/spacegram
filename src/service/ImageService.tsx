@@ -1,5 +1,5 @@
 import { ApiQueryBuilder } from "./ApiQueryBuilder";
-import { Images, FilterParams } from "./ImageInterfaces";
+import { Images, FilterParams, AssetDetails } from "./ImageInterfaces";
 import { notification } from "antd";
 
 export class ImageService {
@@ -23,6 +23,16 @@ export class ImageService {
             this._showError("Could not fetch for group of images", err);
         }
         return images;
+    }
+
+    async getImageDetails(assetId: string): Promise<AssetDetails> {
+        let imageDetails: AssetDetails = {image: undefined};
+        try {
+            imageDetails = await this.queryService.getImageDetails(assetId);
+        } catch (err) {
+            this._showError("Could not fetch image details", err);
+        }
+        return imageDetails;
     }
 
     private _showError(msg: string, err: unknown) {

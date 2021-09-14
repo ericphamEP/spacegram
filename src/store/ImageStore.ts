@@ -1,12 +1,12 @@
 import { makeAutoObservable } from "mobx";
 import { ImageService } from "../service/ImageService";
-import { Image, FilterParams } from "../service/ImageInterfaces";
+import { Image, AssetDetails, FilterParams } from "../service/ImageInterfaces";
 
 export class ImageStore {
     imageService = new ImageService();
     imagesList: Image[] = [];
     totalImagesCount = 0;
-    assetDetails = {};
+    imageDetails: AssetDetails = {image: undefined};
     likedImages: {[key: string]: boolean} = {};
     likedImagesList: Image[] = [];
 
@@ -18,7 +18,6 @@ export class ImageStore {
         } catch {
             this.likedImages = {};
         }
-        
     }
 
     async fetchImagesSearch(search?: string, filters?: FilterParams, page?: number, assetId?: string): Promise<void> {
@@ -30,6 +29,11 @@ export class ImageStore {
     async fetchLikedImages(): Promise<void> {
         const imagesObj = await this.imageService.getImagesFromIds(Object.keys(this.likedImages));
         this.setLikedImagesList(imagesObj.images);
+    }
+
+    async fetchImageDetails(assetId: string): Promise<void> {
+        const imageObj = await this.imageService.getImageDetails(assetId);
+        this.setImageDetails(imageObj);
     }
 
     onLike = async (assetId: string): Promise<void> => {
@@ -50,5 +54,8 @@ export class ImageStore {
     }
     setLikedImagesList = (imagesList: Image[]): void => {
         this.likedImagesList = imagesList;
+    }
+    setImageDetails = (imageData: AssetDetails): void => {
+        this.imageDetails = imageData;
     }
 }
