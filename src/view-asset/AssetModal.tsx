@@ -44,7 +44,7 @@ export class AssetModal extends React.Component<AssetModalProps, {}> {
                 src={image.imgUrl}
               />
             </div>
-            <Descriptions bordered style={{padding: 50}}>
+            <Descriptions bordered style={{paddingTop: 20, paddingBottom: 20}}>
               <Item label="Date Created">{moment(image.date).format("MMM D YYYY, h:mm:ss a")}</Item>
               <Item label="Center">{image.center}</Item>
               <Item label="Location">{image.location}</Item>
