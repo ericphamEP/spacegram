@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/spacegram/static/css/main.331d1850.chunk.css",
+    "main.js": "/spacegram/static/js/main.0f346360.chunk.js",
+    "main.js.map": "/spacegram/static/js/main.0f346360.chunk.js.map",
+    "runtime-main.js": "/spacegram/static/js/runtime-main.bbb0d80d.js",
+    "runtime-main.js.map": "/spacegram/static/js/runtime-main.bbb0d80d.js.map",
+    "static/css/2.786ae0dd.chunk.css": "/spacegram/static/css/2.786ae0dd.chunk.css",
+    "static/js/2.ef0f9484.chunk.js": "/spacegram/static/js/2.ef0f9484.chunk.js",
+    "static/js/2.ef0f9484.chunk.js.map": "/spacegram/static/js/2.ef0f9484.chunk.js.map",
+    "static/js/3.972e6270.chunk.js": "/spacegram/static/js/3.972e6270.chunk.js",
+    "static/js/3.972e6270.chunk.js.map": "/spacegram/static/js/3.972e6270.chunk.js.map",
+    "index.html": "/spacegram/index.html",
+    "static/css/2.786ae0dd.chunk.css.map": "/spacegram/static/css/2.786ae0dd.chunk.css.map",
+    "static/css/main.331d1850.chunk.css.map": "/spacegram/static/css/main.331d1850.chunk.css.map",
+    "static/js/2.ef0f9484.chunk.js.LICENSE.txt": "/spacegram/static/js/2.ef0f9484.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.bbb0d80d.js",
+    "static/css/2.786ae0dd.chunk.css",
+    "static/js/2.ef0f9484.chunk.js",
+    "static/css/main.331d1850.chunk.css",
+    "static/js/main.0f346360.chunk.js"
+  ]
+}
