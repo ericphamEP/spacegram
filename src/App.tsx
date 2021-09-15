@@ -27,7 +27,7 @@ function App(): JSX.Element {
   return (
     <Layout style={{ minHeight: "100vh" }}>
       <Header>
-        <Title style={{paddingTop: 5, color: 'white'}} onClick={resetSearch}>NASA&apos;s Photobook</Title>
+        <Title style={{paddingTop: 5, color: 'white'}} onClick={resetSearch}>Spacegram: Unofficial NASA Photobook</Title>
       </Header>
       <Content style={{margin: 50}}>
         <Collapse defaultActiveKey={['1']} style={{marginBottom: 20}}>
