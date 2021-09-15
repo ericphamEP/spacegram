@@ -20,9 +20,9 @@ export class ImagePreview extends React.Component<SearchPageProps, {}> {
       <Card
         hoverable
         size="small"
-        style={{ height: 500, margin: 10, overflow: 'hidden' }}
+        style={{ height: 510, margin: 10, overflow: 'hidden' }}
         cover={
-          <div style={{ overflow: "hidden", height: "280px" }}>
+          <div style={{ overflow: "hidden", height: "280px", marginTop: 20 }}>
             <img
               style={{ height: "100%", display: 'block', marginLeft: "auto", marginRight: "auto" }}
               alt={this.props.image.id}
