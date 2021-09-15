@@ -38,7 +38,7 @@ export class ImagePreview extends React.Component<SearchPageProps, {}> {
       >
         <Meta
           title={this.props.image.title}
-          description={<React.Fragment><Paragraph ellipsis={{rows: 3}}>{moment(this.props.image.date).format("MMM D YYYY, h:mm:ss a")}</Paragraph><Paragraph ellipsis={{rows: 3}}>{this.props.image.description}</Paragraph></React.Fragment>}
+          description={<React.Fragment><Paragraph ellipsis={{rows: 1}}>{moment(this.props.image.date).format("MMM D YYYY, h:mm:ss a")}</Paragraph><Paragraph ellipsis={{rows: 3}}>{this.props.image.description}</Paragraph></React.Fragment>}
         />
       </Card>
     );

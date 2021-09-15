@@ -40,7 +40,7 @@ function App(): JSX.Element {
         <SearchPage imageStore={imageStore} imageUiStore={imageUiStore} />
         <AssetModal imageStore={imageStore} imageUiStore={imageUiStore} />
       </Content>
-      <Footer style={{ textAlign: 'center' }}>Created by Eric Pham for Shopify&apos;s Front End Developer Intern Challenge - Winter 2022</Footer>
+      <Footer style={{ textAlign: 'center' }}>Created by Eric Pham for Shopify&apos;s Front End Developer Intern Challenge - Winter 2022. Utilizes the NASA Image and Video Library API (images.nasa.gov API) for search results.</Footer>
     </Layout>
   );
 }
