@@ -1,9 +1,9 @@
 # spacegram
 An app to share photos from the NASA Image and Video Library API (images.nasa.gov API)
 
-This project was created for Shopify's Front End Developer Intern Challenge - Winter 2022. It was built using the following frameworks and libraries: React, Typescript, AntD, MobX, Axios, and Moment.
+Check it out here: https://ericphamep.github.io/spacegram/
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was created for Shopify's Front End Developer Intern Challenge - Winter 2022. It was built using the following frameworks and libraries: React, Typescript, AntD, MobX, Axios, and Moment. It was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Features
 
