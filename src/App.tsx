@@ -29,7 +29,7 @@ function App(): JSX.Element {
       <Header>
         <Title style={{paddingTop: 5, color: 'white'}} onClick={resetSearch}>Spacegram: Unofficial NASA Photobook</Title>
       </Header>
-      <Content style={{margin: 50}}>
+      <Content style={{margin: 50, minWidth: 1000}}>
         <Collapse defaultActiveKey={['1']} style={{marginBottom: 20}}>
           <Panel header="Liked Images" key="1">
             <LikedImages imageStore={imageStore} imageUiStore={imageUiStore} />
