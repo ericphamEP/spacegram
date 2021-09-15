@@ -17,4 +17,20 @@ This project was created for Shopify's Front End Developer Intern Challenge - Wi
 
 ## Screenshots
 
-(TODO)
+Homepage
+![Homepage](/screenshots/plain.jpg)
+
+List View
+![List View](/screenshots/listView.jpg)
+
+Search Result
+![Search Result](/screenshots/searchResult.jpg)
+
+Liked Images Section
+![Liked Images Section](/screenshots/likedImages.jpg)
+
+Liking Images
+![Liking Images](/screenshots/likingImages.jpg)
+
+Full Details
+![Full Details](/screenshots/fullDetails.jpg)
