@@ -15,6 +15,11 @@ interface GridViewProps {
 @observer
 export class GridView extends React.Component<GridViewProps, {}> {
   render(): JSX.Element {
+    const onLike = (assetId: string): void => {
+      this.props.imageStore.onLike(assetId);
+      this.forceUpdate();
+    }
+    const likedImages = this.props.imageStore.likedImages;
     return (
       <List 
         grid={{
@@ -29,7 +34,7 @@ export class GridView extends React.Component<GridViewProps, {}> {
         dataSource={this.props.imageStore.imagesList}
         renderItem={imageData => (
           <Item key={imageData.id}>
-            <ImagePreview image={imageData} onDetail={this.props.imageUiStore.loadImageDetails} onLike={this.props.imageStore.onLike} liked={this.props.imageStore.likedImages[imageData.id]} />
+            <ImagePreview image={imageData} onDetail={this.props.imageUiStore.loadImageDetails} onLike={onLike} liked={likedImages[imageData.id]} />
           </Item>
         )}
       />
