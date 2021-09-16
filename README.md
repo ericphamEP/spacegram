@@ -8,6 +8,7 @@ This project was created for Shopify's Front End Developer Intern Challenge - Wi
 ## Features
 
 - Search functionality
+- Filter on a variety of categories (includes a date-picker for year categories)
 - Pagination
 - Option for toggling a list view and a grid view
 - Inspect each result for a modal with full item details
@@ -34,3 +35,12 @@ Liking Images
 
 Full Details
 ![Full Details](/screenshots/fullDetails.jpg)
+
+Filter Tags
+![Filter Tags](/screenshots/filterTags.jpg)
+
+Date Filter
+![Date Filter](/screenshots/dateFilter.jpg)
+
+Word Filter
+![Word Filter](/screenshots/wordFilter.jpg)
