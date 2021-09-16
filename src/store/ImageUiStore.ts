@@ -1,12 +1,12 @@
 import { makeAutoObservable } from "mobx";
 import { ImageStore } from "./ImageStore";
-import { FilterParams } from "../service/ImageInterfaces";
 
 export class ImageUiStore {
     private imageStore: ImageStore;
     private currentSearch = "";
-    private filters: FilterParams = {};
+    private filters: {[x: string]: string} = {};
     private page = 1;
+    private selectedFilter = "title";
 
     private isLoading = false;
     private isLikeLoading = false;
@@ -69,6 +69,29 @@ export class ImageUiStore {
     }
     setPage(newPage: number): void {
         this.page = newPage;
+    }
+
+    getSelectedFilter(): string {
+        return this.selectedFilter;
+    }
+    setSelectedFilter(selectedFilter: string): void {
+        this.selectedFilter = selectedFilter;
+    }
+
+    getFilters(): {[x: string]: string} {
+        return this.filters;
+    }
+    editFilter(value: string): void {
+        if (!value || value == "") {
+            this.removeFilter(this.selectedFilter);
+        } else {
+            this.filters[this.selectedFilter] = value;
+        }
+        this.loadSearchResults();
+    }
+    removeFilter(filterType: string): void {
+        delete this.filters[filterType];
+        this.loadSearchResults();
     }
 
     resetImageDetails(): void {

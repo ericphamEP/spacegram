@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Typography } from 'antd';
+import { Card, Typography, Tooltip } from 'antd';
 import moment from 'moment';
 import { HeartOutlined, HeartFilled, FileSearchOutlined } from '@ant-design/icons';
 import { Image } from "./../service/ImageInterfaces";
@@ -31,9 +31,13 @@ export class ImagePreview extends React.Component<SearchPageProps, {}> {
           </div>
         }
         actions={[
-          <FileSearchOutlined key="details" onClick={() => this.props.onDetail(this.props.image.id)} />,
-          this.props.liked ? <HeartFilled onClick={() => this.props.onLike(this.props.image.id)} /> :
-          <HeartOutlined onClick={() => this.props.onLike(this.props.image.id)} />,
+          <Tooltip title="View Details" key="details">
+            <FileSearchOutlined onClick={() => this.props.onDetail(this.props.image.id)} />
+          </Tooltip>,
+          <Tooltip title="Like Image" key="like">
+            {this.props.liked ? <HeartFilled onClick={() => this.props.onLike(this.props.image.id)} /> :
+            <HeartOutlined onClick={() => this.props.onLike(this.props.image.id)} />}
+          </Tooltip>,
         ]}
       >
         <Meta
